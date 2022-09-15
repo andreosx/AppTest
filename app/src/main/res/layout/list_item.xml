@@ -2,44 +2,105 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_repository"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="20dp" >
 
         <TextView
-            android:id="@+id/username"
-            android:layout_width="wrap_content"
+            android:id="@+id/repository_name"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toTopOf="@+id/name"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/owner_picture"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="\@username" />
+            tools:text="Nome do Repositório" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/repository_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            tools:text="Descrição do repositório, lorem ispun ahaha ahs ashuhau eij as ka ejaeha uae asajsahjeahke ja ak jeka je"
+            app:layout_constraintEnd_toStartOf="@+id/owner_picture"
+            app:layout_constraintStart_toStartOf="@+id/repository_name"
+            app:layout_constraintTop_toBottomOf="@+id/repository_name" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/repository_description"
+            app:tint="@color/orange_20" />
+
+        <TextView
+            android:id="@+id/repository_fork_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/username"
-            app:layout_constraintTop_toBottomOf="@+id/username"
-            tools:text="Name Surname" />
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            android:textColor="@color/orange_20"
+            tools:text="20" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="411dp"
-            android:layout_marginBottom="19dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="25dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="8dp"
+            app:tint="@color/orange_20"
+            app:layout_constraintBottom_toBottomOf="@+id/repository_fork_count"
+            app:layout_constraintStart_toEndOf="@+id/repository_fork_count"
+            app:layout_constraintTop_toTopOf="@+id/repository_fork_count" />
+
+        <TextView
+            android:id="@+id/repository_star_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/orange_20"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="@+id/imageView2"
+            tools:text="48" />
+
+        <ImageView
+            android:id="@+id/owner_picture"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/repository_name" />
+
+        <TextView
+            android:id="@+id/owner_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/owner_picture"
+            app:layout_constraintStart_toStartOf="@+id/owner_picture"
+            app:layout_constraintTop_toBottomOf="@+id/owner_picture"
+            tools:text="dmioto" />
+
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/gray_10"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/repository_fork_count"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

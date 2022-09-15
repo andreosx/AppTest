@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.util
+package com.br.apptest.util
 
 import retrofit2.Response
 import java.net.HttpURLConnection

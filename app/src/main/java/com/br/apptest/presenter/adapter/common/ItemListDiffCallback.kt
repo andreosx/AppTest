@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.DiffUtil
 import com.br.apptest.domain.model.Item
 import com.br.apptest.domain.model.Repository
 
-class UserListDiffCallback(
+class ItemListDiffCallback(
     private val oldList: List<Item>,
     private val newList: List<Item>
 ) : DiffUtil.Callback() {

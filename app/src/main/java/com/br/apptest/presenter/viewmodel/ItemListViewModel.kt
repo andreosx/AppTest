@@ -5,22 +5,21 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.br.apptest.domain.model.Item
 import com.br.apptest.domain.model.SystemVO
-import com.br.apptest.domain.use_case.GetRepositoryUseCase
-import com.br.apptest.domain.use_case.IGetRepositoryUseCase
+import com.br.apptest.domain.use_case.IItemUseCase
 import kotlinx.coroutines.*
 
-class RepositoryListViewModel (private val getRepositoryUseCase: IGetRepositoryUseCase)  : ViewModel() {
+class ItemListViewModel (private val useCase: IItemUseCase)  : ViewModel() {
 
-    private val userList = MutableLiveData<List<Item>?>()
+    private val itemList = MutableLiveData<List<Item>?>()
     private val errorMessage = MutableLiveData<SystemVO>()
     var job: Job? = null
 
-    fun getRepository(page: Int) {
+    fun getItemList(page: Int) {
         job = CoroutineScope(Dispatchers.IO).launch {
-            val response = getRepositoryUseCase.getRepository(page)
+            val response = useCase.getRepositories(page)
             withContext(Dispatchers.Main) {
                 if(response.systemVO.code == 0){
-                    userList.postValue(response.item)
+                    itemList.postValue(response.item)
                 }else{
                     errorMessage.postValue(response.systemVO)
                 }
@@ -28,8 +27,8 @@ class RepositoryListViewModel (private val getRepositoryUseCase: IGetRepositoryU
         }
     }
 
-    fun getUserList(): LiveData<List<Item>?> {
-        return userList
+    fun getList(): LiveData<List<Item>?> {
+        return itemList
     }
 
     fun getError(): LiveData<SystemVO> {

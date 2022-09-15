@@ -1,17 +1,12 @@
 package com.br.apptest.domain.use_case
 
 import com.br.apptest.data.repository.IRepository
-import com.br.apptest.domain.model.RepositoryItem
-import com.br.apptest.domain.model.SystemVO
+import com.br.apptest.domain.model.Repositories
 
-class GetRepositoryUseCase(private val repository: IRepository): IGetRepositoryUseCase {
-    override suspend fun getRepository(page: Int): RepositoryItem = try {
-        repository.getRepositories(page)
-    } catch (ex: Exception){
-        ex.printStackTrace()
-        RepositoryItem(listOf(), SystemVO(422,""))
-    }
+class ItemUseCase(private val repository: IRepository) : IItemUseCase {
+    override suspend fun getRepositories(page: Int): Repositories = repository.getRespositories(page)
 }
-interface IGetRepositoryUseCase{
-    suspend fun getRepository(page: Int): RepositoryItem
+
+interface IItemUseCase {
+    suspend fun getRepositories(page: Int): Repositories
 }

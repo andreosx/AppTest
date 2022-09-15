@@ -1,23 +1,23 @@
 package com.picpay.desafio.android
 
-import com.picpay.desafio.android.data.api.PicPayApi
-import com.picpay.desafio.android.data.repository.UserRepository
-import com.picpay.desafio.android.data.repository.UserRepositoryImpl
-import com.picpay.desafio.android.domain.use_case.GetUser
-import com.picpay.desafio.android.domain.use_case.getUserUseCase
-import com.picpay.desafio.android.presenter.viewmodel.UserListViewModel
-import com.picpay.desafio.android.util.retrofit.Service
+import com.br.apptest.data.api.Api
+import com.br.apptest.data.repository.IRepository
+import com.br.apptest.data.repository.GitRepository
+import com.br.apptest.domain.use_case.ItemUseCase
+import com.br.apptest.domain.use_case.IItemUseCase
+import com.br.apptest.presenter.viewmodel.ItemListViewModel
+import com.br.apptest.util.retrofit.Service
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val picPayServiceModule = module {
+val serviceModule = module {
 
-    single { Service().createService(PicPayApi::class.java) }
+    single { Service().createService(Api::class.java) }
 
-    factory<UserRepository> { UserRepositoryImpl(get()) }
+    factory<IRepository> { GitRepository(get()) }
 
-    factory<getUserUseCase> { GetUser(get()) }
+    factory<IItemUseCase> { ItemUseCase(get()) }
 
-    viewModel { UserListViewModel(get()) }
+    viewModel { ItemListViewModel(get()) }
 }
 
