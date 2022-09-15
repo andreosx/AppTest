@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AppTest</string>
+    <string name="title">Repositórios</string>
+    <string name="error">Ocorreu um erro. Tente novamente.</string>
+</resources>
