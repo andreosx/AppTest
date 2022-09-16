@@ -13,9 +13,9 @@ Os seguintes requisitos foram aplicados ao projeto:
 - Injeção de dependência (Koin)
 - Coroutines
 - Retrofit
+- Acessibilidade
+- Endless scroll
 - Testes unitários
-- Testes instrumentados
-
 
 ### Autor
 ---
