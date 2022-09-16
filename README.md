@@ -2,7 +2,7 @@
 
 ### Descrição
 
-Criar um aplicativo para consultar a API do GitHub e trazer os repositó rios mais
+Criar um aplicativo para consultar a API do GitHub e trazer os repositórios mais
 populares de Java.
 
 ### 🛠 Tecnologias
