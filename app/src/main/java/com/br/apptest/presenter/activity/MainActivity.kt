@@ -12,11 +12,12 @@ import com.br.apptest.R
 import com.br.apptest.databinding.ActivityMainBinding
 import com.br.apptest.domain.model.Item
 import com.br.apptest.presenter.adapter.ItemListAdapter
+import com.br.apptest.presenter.adapter.util.CellClickListener
 import com.br.apptest.presenter.viewmodel.ItemListViewModel
 import com.br.apptest.util.Constants
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity : AppCompatActivity(R.layout.activity_main), CellClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: ItemListAdapter
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private fun setView(){
         listItem = arrayListOf()
-        adapter = ItemListAdapter(this)
+        adapter = ItemListAdapter(this,this)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -89,6 +90,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private fun hiddenLoading(){
         binding.progressBar.visibility = View.GONE
+    }
+
+    override fun onCellClickListener(item: Item) {
+        Toast.makeText(this,"Cell clicked "+item.name, Toast.LENGTH_SHORT).show()
     }
 
 }

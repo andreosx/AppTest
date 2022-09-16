@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.br.apptest.R
 import com.br.apptest.databinding.ListItemBinding
 import com.br.apptest.domain.model.Item
+import com.br.apptest.presenter.adapter.util.CellClickListener
 
-class ItemListAdapter(val ctx: Context) :
+class ItemListAdapter(val ctx: Context, val cellClickListener: CellClickListener) :
     RecyclerView.Adapter<ItemListAdapter.MainActivityAdapterHolder>() {
 
     private var item = emptyList<Item>()
@@ -43,6 +44,10 @@ class ItemListAdapter(val ctx: Context) :
         holder.binding.repositoryForkCount.text = item.forks_count.toString()
         holder.binding.repositoryStarCount.text = item.stargazers_count.toString()
         holder.binding.ownerUsername.text =item.owner.login
+
+        holder.itemView.setOnClickListener {
+            cellClickListener.onCellClickListener(item)
+        }
     }
 
     private fun setAcessibility(holder: MainActivityAdapterHolder, item: Item){
