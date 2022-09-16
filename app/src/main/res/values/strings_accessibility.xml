@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="repository_name">Nome do repositório %s</string>
+    <string name="repository_description">Descrição do repositório %s</string>
+    <string name="forks_description">Quantidade de forks %s</string>
+    <string name="star_description">Quantidade de star %s</string>
+    <string name="owner_description">Dono do repositório %s</string>
+</resources>

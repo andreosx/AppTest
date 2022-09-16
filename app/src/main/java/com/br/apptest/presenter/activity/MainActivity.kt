@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private fun setView(){
         listItem = arrayListOf()
-        adapter = ItemListAdapter()
+        adapter = ItemListAdapter(this)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
