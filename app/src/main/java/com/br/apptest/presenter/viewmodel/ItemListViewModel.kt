@@ -10,7 +10,7 @@ import kotlinx.coroutines.*
 
 class ItemListViewModel (private val useCase: IItemUseCase)  : ViewModel() {
 
-    private val itemList = MutableLiveData<List<Item>?>()
+    private val itemList = MutableLiveData<List<Item>>()
     private val errorMessage = MutableLiveData<SystemVO>()
     var job: Job? = null
 
@@ -27,7 +27,7 @@ class ItemListViewModel (private val useCase: IItemUseCase)  : ViewModel() {
         }
     }
 
-    fun getList(): LiveData<List<Item>?> {
+    fun getList(): LiveData<List<Item>> {
         return itemList
     }
 
