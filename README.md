@@ -13,6 +13,7 @@ page=1
 
 Paginação na tela de lista, com endless scroll / scroll infinito (incrementando o
 parâ metro page).
+
 Cada repositório deve exibir Nome do repositório, Descrição do Repositório,
 Nome / Foto do autor, Número de Stars, Número de Forks
 
