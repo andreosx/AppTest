@@ -1,8 +1,8 @@
-package com.br.apptest.domain.model
+package com.br.apptest.domain.model.repo
 
 import kotlinx.parcelize.RawValue
 
 data class RepositoryVO(
-    val item: @RawValue List<Item>,
+    val Repo: @RawValue List<Repo>,
     val systemVO: SystemVO
     )

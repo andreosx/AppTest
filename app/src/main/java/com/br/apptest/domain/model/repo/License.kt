@@ -1,4 +1,4 @@
-package com.br.apptest.domain.model
+package com.br.apptest.domain.model.repo
 
 data class License(
     val key: String,

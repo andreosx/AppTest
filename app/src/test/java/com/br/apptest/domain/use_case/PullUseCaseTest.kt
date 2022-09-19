@@ -1,6 +1,6 @@
 package com.br.apptest.domain.use_case
 
-import com.br.apptest.data.repository.RepositoriesRepository
+import com.br.apptest.data.repository.PullRepository
 import com.br.apptest.factory.RepositoryVOFactory
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -8,10 +8,10 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Test
 
-class ItemUseCaseTest{
+class PullUseCaseTest{
 
-    private val repository = mockk<RepositoriesRepository>()
-    private val useCase = ItemUseCase(repository)
+    private val repository = mockk<PullRepository>()
+    private val useCase = PullUseCase(repository)
 
     @Test
     fun getRepositories_return_list_with_success(){
@@ -20,10 +20,10 @@ class ItemUseCaseTest{
             coEvery { repository.getRespositories(1) } returns RepositoryVOFactory.repositories
 
             //When
-            val result = useCase.getRepositories(1).item
+            val result = useCase.getPull(1).item
 
             //Then
-            Assert.assertEquals(result.size, RepositoryVOFactory.repositories.item.size)
+            Assert.assertEquals(result.size, RepositoryVOFactory.repositories.Repo.size)
 
         }
     }
@@ -35,7 +35,7 @@ class ItemUseCaseTest{
             coEvery { repository.getRespositories(1) } throws RuntimeException()
 
             //When
-            val result = useCase.getRepositories(1)
+            val result = useCase.getPull(1)
 
             //Then
             Assert.assertEquals(result.item.size,0)

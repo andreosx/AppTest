@@ -3,14 +3,14 @@ package com.br.apptest.presenter.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.br.apptest.domain.model.Item
-import com.br.apptest.domain.model.SystemVO
-import com.br.apptest.domain.use_case.IItemUseCase
+import com.br.apptest.domain.model.repo.Repo
+import com.br.apptest.domain.model.repo.SystemVO
+import com.br.apptest.domain.use_case.IRepoUseCase
 import kotlinx.coroutines.*
 
-class ItemListViewModel (private val useCase: IItemUseCase)  : ViewModel() {
+class RepoViewModel (private val useCase: IRepoUseCase)  : ViewModel() {
 
-    private val itemList = MutableLiveData<List<Item>>()
+    private val itemList = MutableLiveData<List<Repo>>()
     private val errorMessage = MutableLiveData<SystemVO>()
     var job: Job? = null
 
@@ -19,7 +19,7 @@ class ItemListViewModel (private val useCase: IItemUseCase)  : ViewModel() {
             val response = useCase.getRepositories(page)
             withContext(Dispatchers.Main) {
                 if(response.systemVO.code == 0){
-                    itemList.postValue(response.item)
+                    itemList.postValue(response.Repo)
                 }else{
                     errorMessage.postValue(response.systemVO)
                 }
@@ -27,7 +27,7 @@ class ItemListViewModel (private val useCase: IItemUseCase)  : ViewModel() {
         }
     }
 
-    fun getList(): LiveData<List<Item>> {
+    fun getList(): LiveData<List<Repo>> {
         return itemList
     }
 

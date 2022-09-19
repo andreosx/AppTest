@@ -1,20 +1,20 @@
 package com.br.apptest.domain.use_case
 
-import com.br.apptest.data.repository.IRepository
-import com.br.apptest.domain.model.RepositoryVO
-import com.br.apptest.domain.model.SystemVO
+import com.br.apptest.data.repository.IRepoRepository
+import com.br.apptest.domain.model.repo.RepositoryVO
+import com.br.apptest.domain.model.repo.SystemVO
 
-class ItemUseCase(private val repository: IRepository) : IItemUseCase {
+class RepoUseCase(private val pullRepo: IRepoRepository) : IRepoUseCase {
 
     val MSG: String = "Exception!"
 
     override suspend fun getRepositories(page: Int): RepositoryVO = try{
-        repository.getRespositories(page)
+        pullRepo.getRespositories(page)
     }catch (ex: Exception){
         RepositoryVO(listOf(), SystemVO(500,MSG))
     }
 }
 
-interface IItemUseCase {
+interface IRepoUseCase {
     suspend fun getRepositories(page: Int): RepositoryVO
 }

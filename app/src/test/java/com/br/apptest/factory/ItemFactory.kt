@@ -1,9 +1,9 @@
 package com.br.apptest.factory
 
-import com.br.apptest.domain.model.Item
+import com.br.apptest.domain.model.repo.Repo
 
 object ItemFactory {
-    val item = Item(
+    val item = Repo(
         true,
         "https://api.github.com/repos/doocs/advanced-java/{archive_format}{/ref}",
         true,

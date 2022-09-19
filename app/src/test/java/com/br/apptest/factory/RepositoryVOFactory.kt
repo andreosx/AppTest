@@ -1,9 +1,6 @@
 package com.br.apptest.factory
 
-import androidx.lifecycle.MutableLiveData
-import com.br.apptest.domain.model.Item
-import com.br.apptest.domain.model.RepositoryVO
-import com.br.apptest.domain.model.SystemVO
+import com.br.apptest.domain.model.repo.RepositoryVO
 
 object RepositoryVOFactory {
 
@@ -14,8 +11,8 @@ object RepositoryVOFactory {
        ItemFactory.item,
        ItemFactory.item,
     )
-    val repositories =  RepositoryVO(items, SystemVO(200,"Teste"))
+    val repositories =  RepositoryVO(items, SystemVOFactory.systemVOSuccess)
 
-    val repositoriesErro = RepositoryVO(listOf(),SystemVOFactory.systemVOError)
+    val repositoriesErro = RepositoryVO(listOf(), SystemVOFactory.systemVOError)
 
 }

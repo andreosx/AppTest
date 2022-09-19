@@ -12,13 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppTest">
-        <activity android:name="com.br.apptest.presenter.activity.MainActivity"
+        <activity android:name="com.br.apptest.presenter.activity.RepoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.br.apptest.presenter.activity.PullsActivity"></activity>
     </application>
-
     </manifest>

@@ -1,6 +1,6 @@
-package com.br.apptest.domain.model
+package com.br.apptest.domain.model.pull
 
-data class Owner(
+data class UserXX(
     val avatar_url: String,
     val events_url: String,
     val followers_url: String,

@@ -1,6 +1,6 @@
-package com.br.apptest.domain.model
+package com.br.apptest.domain.model.pull
 
-data class Item(
+data class Repo(
     val allow_forking: Boolean,
     val archive_url: String,
     val archived: Boolean,
@@ -61,7 +61,6 @@ data class Item(
     val pulls_url: String,
     val pushed_at: String,
     val releases_url: String,
-    val score: Double,
     val size: Int,
     val ssh_url: String,
     val stargazers_count: Int,

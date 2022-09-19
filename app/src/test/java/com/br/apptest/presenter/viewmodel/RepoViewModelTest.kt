@@ -2,9 +2,9 @@ package com.br.apptest.presenter.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.br.apptest.domain.model.Item
-import com.br.apptest.domain.model.SystemVO
-import com.br.apptest.domain.use_case.ItemUseCase
+import com.br.apptest.domain.model.repo.Repo
+import com.br.apptest.domain.model.repo.SystemVO
+import com.br.apptest.domain.use_case.PullUseCase
 import com.br.apptest.factory.RepositoryVOFactory
 import com.br.apptest.factory.SystemVOFactory
 import io.mockk.MockKAnnotations
@@ -23,8 +23,7 @@ import org.junit.Rule
 import org.junit.Test
 import java.util.concurrent.CountDownLatch
 
-
-class ItemListViewModelTest {
+class RepoViewModelTest {
 
     @Rule
     @JvmField
@@ -32,10 +31,10 @@ class ItemListViewModelTest {
 
     private val testDispatcher = TestCoroutineDispatcher()
 
-    private val useCase = mockk<ItemUseCase>()
-    private val viewModel = ItemListViewModel(useCase)
+    private val useCase = mockk<PullUseCase>()
+    private val viewModel = RepoViewModel(useCase)
 
-    private var observeTodo = mockk<Observer<List<Item>>>()
+    private var observeTodo = mockk<Observer<List<Repo>>>()
     private var observerError = mockk<Observer<SystemVO>>()
 
     @Before
@@ -58,16 +57,16 @@ class ItemListViewModelTest {
     @Test
     fun getUsers_return_observable_with_success() = runTest{
         //Given
-        coEvery { useCase.getRepositories(1) } returns RepositoryVOFactory.repositories
+        coEvery { useCase.getPull(1) } returns RepositoryVOFactory.repositories
 
         //When
         viewModel.getItemList(1)
 
         //Then
-        var allUsers : List<Item>? = RepositoryVOFactory.items
+        var allUsers : List<Repo>? = RepositoryVOFactory.items
         val latch = CountDownLatch(1)
-        val observer = object : Observer<List<Item>> {
-            override fun onChanged(users: List<Item>?) {
+        val observer = object : Observer<List<Repo>> {
+            override fun onChanged(users: List<Repo>?) {
                 allUsers = users
                 latch.countDown()
                 viewModel.getList().removeObserver(this)
@@ -82,7 +81,7 @@ class ItemListViewModelTest {
     @Test
     fun getUsers_return_observable_with_error() = runTest{
         //Given
-        coEvery { useCase.getRepositories(1) } returns RepositoryVOFactory.repositoriesErro
+        coEvery { useCase.getPull(1) } returns RepositoryVOFactory.repositoriesErro
 
         //When
         viewModel.getItemList(1)
