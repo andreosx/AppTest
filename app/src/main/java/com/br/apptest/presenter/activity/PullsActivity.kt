@@ -1,5 +1,7 @@
 package com.br.apptest.presenter.activity
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -32,8 +34,6 @@ class PullsActivity : AppCompatActivity(R.layout.activity_pull) {
         owner = intent.getStringExtra("owner")!!
         repo = intent.getStringExtra("repo")!!
 
-        Toast.makeText(this,"teste", Toast.LENGTH_LONG).show()
-
         setView()
         initObservable()
         getPull(owner,repo)
@@ -44,15 +44,15 @@ class PullsActivity : AppCompatActivity(R.layout.activity_pull) {
         viewModel.getList().observe(this, Observer {
             hiddenLoading()
             if (it != null){
-                listRepo.addAll(it)
-                loadPageList(it)
+               // listRepo.addAll(it)
+               // loadPageList(it)
             }
         })
 
         viewModel.getError().observe(this, Observer {
             hiddenLoading()
             Toast.makeText(this,it.message, Toast.LENGTH_LONG).show()
-           // finish()
+            finish()
         })
     }
 
@@ -82,4 +82,14 @@ class PullsActivity : AppCompatActivity(R.layout.activity_pull) {
     private fun hiddenLoading(){
         binding.progressBar.visibility = View.GONE
     }
+
+    companion object {
+        fun createIntent(repo: Repo, context: Context): Intent {
+            val intent = Intent(context, PullsActivity::class.java)
+            intent.putExtra("owner", repo.owner.login)
+            intent.putExtra("repo", repo.language)
+            return intent
+        }
+    }
+
 }

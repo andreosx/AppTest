@@ -1,6 +1,5 @@
 package com.br.apptest.presenter.activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -94,10 +93,7 @@ class RepoActivity : AppCompatActivity(R.layout.activity_repo), CellClickListene
     }
 
     override fun onCellClickListener(repo: Repo) {
-        val intent = Intent(this, PullsActivity::class.java)
-        intent.putExtra("owner", repo.owner.login)
-        intent.putExtra("repo", repo.name)
-        startActivity(intent)
+        startActivity(PullsActivity.createIntent(repo,this))
     }
 
 }

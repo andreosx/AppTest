@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.br.apptest.R
 import com.br.apptest.databinding.AdapterPullBinding
 import com.br.apptest.domain.model.pull.PullItem
-import com.br.apptest.domain.model.repo.Repo
-import com.br.apptest.presenter.adapter.util.CellClickListener
 
 class PullAdapter(val ctx: Context) :
     RecyclerView.Adapter<PullAdapter.MainActivityAdapterHolder>() {

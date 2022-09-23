@@ -5,4 +5,6 @@ object Constants {
     const val language = "Java"
     const val sort = "sort"
     const val totalAvailablePages = 100
+    const val field_message_error_json = "message"
+    const val value_unknown_error = "Unknown error"
 }

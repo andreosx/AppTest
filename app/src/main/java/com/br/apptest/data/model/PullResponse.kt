@@ -12,7 +12,7 @@ data class PullResponse(
     @SerializedName("items") var items: @RawValue List<PullItem>
 ): Parcelable
 
-fun PullResponse.toRepositories(): Pull {
+fun PullResponse.toPull(): Pull {
     return Pull(
         items = items
     )

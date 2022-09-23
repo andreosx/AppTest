@@ -1,9 +1,9 @@
 package com.br.apptest.domain.model.pull
 
-import com.br.apptest.domain.model.repo.SystemVO
+import com.br.apptest.domain.model.util.SystemDTO
 import kotlinx.parcelize.RawValue
 
 data class PullVO(
     val item: @RawValue List<PullItem>,
-    val systemVO: SystemVO
+    val systemDTO: SystemDTO
     )
