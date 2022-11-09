@@ -20,10 +20,10 @@ class PullUseCaseTest{
             val response: Response<List<PullResponse>> = mockk()
 
             //Given
-            coEvery { repository.getPull("andre","java") } returns response
+            coEvery { repository.getPull("andre","Kotlin") } returns response
 
             //When
-            val result = useCase.getPull("andre","java")
+            val result = useCase.getPull("andre","Kotlin")
 
             //Then
             Assert.assertEquals(result, response)

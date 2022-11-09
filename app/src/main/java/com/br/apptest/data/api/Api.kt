@@ -10,9 +10,9 @@ import retrofit2.http.Query
 interface Api {
     @GET("repositories")
     suspend fun getRepositories(
-        @Query("q") q: String?,
-        @Query("sort") sort: String?,
-        @Query("page") page: String?,
+        @Query("q") q: String,
+        @Query("sort") sort: String,
+        @Query("page") page: String,
     ): Response<RepositoriesResponse>
 
     @GET("repos/{owner}/{repository}/pulls/1")

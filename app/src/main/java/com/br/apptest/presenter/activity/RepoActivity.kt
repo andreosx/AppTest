@@ -48,7 +48,6 @@ class RepoActivity : AppCompatActivity(R.layout.activity_repo), CellClickListene
 
         viewModel.getError().observe(this, Observer {
             hiddenLoading()
-            binding.recyclerView.visibility = View.GONE
             Toast.makeText(this,it.message, Toast.LENGTH_SHORT).show()
         })
     }
