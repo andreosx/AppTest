@@ -1,4 +1,4 @@
-## Projeto destinado para teste de habilidades.
+## Projeto destinado a teste de habilidades.
 
 ### Descrição
 
