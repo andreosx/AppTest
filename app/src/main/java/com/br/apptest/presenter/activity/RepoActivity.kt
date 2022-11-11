@@ -38,18 +38,18 @@ class RepoActivity : AppCompatActivity(R.layout.activity_repo), CellClickListene
     }
 
     private fun initObservable(){
-        viewModel.getList().observe(this, Observer {
+        viewModel.getList().observe(this) {
             hiddenLoading()
-            if (it != null){
+            if (it != null) {
                 listRepo.addAll(it)
                 loadPageList(it)
             }
-        })
+        }
 
-        viewModel.getError().observe(this, Observer {
+        viewModel.getError().observe(this) {
             hiddenLoading()
-            Toast.makeText(this,it.message, Toast.LENGTH_SHORT).show()
-        })
+            Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setView(){
