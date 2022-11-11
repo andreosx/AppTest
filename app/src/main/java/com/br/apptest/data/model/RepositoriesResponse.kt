@@ -12,11 +12,13 @@ data class RepositoriesResponse(
     @SerializedName("incomplete_results") val incomplete_results: Boolean,
     @SerializedName("items") var Repos: @RawValue List<Repo>,
     @SerializedName("total_count") val total_count: Int
-): Parcelable
+) : Parcelable
 
 fun RepositoriesResponse.toRepositories(): Repository {
     return Repository(
-        Repos = Repos
+        incomplete_results = incomplete_results,
+        Repos = Repos,
+        total_count = total_count
     )
 }
 

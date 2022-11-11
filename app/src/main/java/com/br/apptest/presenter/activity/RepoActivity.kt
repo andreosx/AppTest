@@ -92,7 +92,7 @@ class RepoActivity : AppCompatActivity(R.layout.activity_repo), CellClickListene
     }
 
     override fun onCellClickListener(repo: Repo) {
-        startActivity(PullsActivity.createIntent(repo,this))
+        //startActivity(PullsActivity.createIntent(repo,this))
     }
 
 }
