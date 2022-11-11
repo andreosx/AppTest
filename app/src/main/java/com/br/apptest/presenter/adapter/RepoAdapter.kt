@@ -11,7 +11,7 @@ import com.br.apptest.domain.model.repo.Repo
 import com.br.apptest.presenter.adapter.util.CellClickListener
 import com.bumptech.glide.Glide
 
-class RepoAdapter(val ctx: Context, val cellClickListener: CellClickListener) :
+class RepoAdapter(val ctx: Context, private val cellClickListener: CellClickListener) :
     RecyclerView.Adapter<RepoAdapter.MainActivityAdapterHolder>() {
 
     private var item = emptyList<Repo>()

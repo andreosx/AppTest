@@ -1,16 +1,14 @@
 package com.br.apptest.presenter.activity
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
-import org.junit.FixMethodOrder
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.LargeTest
 import org.junit.Rule
 import org.junit.runner.RunWith
-import org.junit.runners.MethodSorters
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-@RunWith(AndroidJUnit4ClassRunner::class)
+@RunWith(AndroidJUnit4::class)
+@LargeTest
 class RepoActivityTest{
     @get:Rule
     val activityRule = ActivityScenarioRule(RepoActivity::class.java)
-
 }
