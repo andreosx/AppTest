@@ -3,9 +3,9 @@ package com.br.apptest
 import com.br.apptest.data.api.Api
 import com.br.apptest.data.repository.IRepoRepository
 import com.br.apptest.data.repository.RepoRepository
+import com.br.apptest.presenter.viewmodel.RepoViewModel
 import com.br.apptest.use_case.IRepoUseCase
 import com.br.apptest.use_case.RepoUseCase
-import com.br.apptest.presenter.viewmodel.RepoViewModel
 import com.br.apptest.util.retrofit.Service
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
