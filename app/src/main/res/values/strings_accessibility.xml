@@ -5,4 +5,7 @@
     <string name="forks_description">Quantidade de forks %s</string>
     <string name="star_description">Quantidade de star %s</string>
     <string name="owner_description">Dono do repositório %s</string>
+    <string name="avatar_owner_description">Avatar do dono do repositório</string>
+    <string name="repository_fork_count_description">Quantidade de forks</string>
+    <string name="repository_star_count_description">Quantidade de stars</string>
 </resources>

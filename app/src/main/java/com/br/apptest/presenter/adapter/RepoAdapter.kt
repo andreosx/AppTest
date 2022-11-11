@@ -9,6 +9,7 @@ import com.br.apptest.R
 import com.br.apptest.databinding.AdapterRepoBinding
 import com.br.apptest.domain.model.repo.Repo
 import com.br.apptest.presenter.adapter.util.CellClickListener
+import com.bumptech.glide.Glide
 
 class RepoAdapter(val ctx: Context, val cellClickListener: CellClickListener) :
     RecyclerView.Adapter<RepoAdapter.MainActivityAdapterHolder>() {
@@ -45,6 +46,11 @@ class RepoAdapter(val ctx: Context, val cellClickListener: CellClickListener) :
         holder.binding.repositoryStarCount.text = repo.stargazers_count.toString()
         holder.binding.ownerUsername.text = repo.owner.login
 
+        Glide.with(ctx)
+            .load(repo.owner.avatar_url)
+            .circleCrop()
+            .into(holder.binding.ownerPicture)
+
         holder.itemView.setOnClickListener {
             cellClickListener.onCellClickListener(repo)
         }
@@ -56,5 +62,6 @@ class RepoAdapter(val ctx: Context, val cellClickListener: CellClickListener) :
         holder.binding.repositoryForkCount.contentDescription = ctx.getString(R.string.forks_description,repo.forks_count.toString())
         holder.binding.repositoryStarCount.contentDescription = ctx.getString(R.string.star_description,repo.stargazers_count.toString())
         holder.binding.ownerUsername.contentDescription = ctx.getString(R.string.owner_description,repo.owner.login)
+        holder.binding.ownerPicture.contentDescription = ctx.getString(R.string.avatar_owner_description)
     }
 }

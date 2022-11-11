@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.br.apptest.R
@@ -92,7 +91,7 @@ class RepoActivity : AppCompatActivity(R.layout.activity_repo), CellClickListene
     }
 
     override fun onCellClickListener(repo: Repo) {
-        //startActivity(PullsActivity.createIntent(repo,this))
+        Toast.makeText(this,repo.full_name,Toast.LENGTH_LONG).show()
     }
 
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_8_dp">8dp</dimen>
+    <dimen name="dimen_18_dp">18dp</dimen>
+    <dimen name="dimen_20_sp">20sp</dimen>
+    <dimen name="dimen_12_sp">12sp</dimen>
+    <dimen name="dimen_14_sp">12sp</dimen>
+    <dimen name="dimen_75_dp">75dp</dimen>
+    <dimen name="dimen_card_corner_radius">20dp</dimen>
+    <dimen name="dimen_card_elevation">10dp</dimen>
+    <dimen name="dimen_card_max_elevation">12dp</dimen>
+</resources>
