@@ -22,6 +22,7 @@ Os seguintes requisitos foram aplicados ao projeto:
 - Acessibilidade
 - Endless scroll
 - Testes unitários
+- Testes de interface (Espresso)
 
 ### Autor
 ---
