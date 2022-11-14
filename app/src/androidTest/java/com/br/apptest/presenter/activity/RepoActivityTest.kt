@@ -21,14 +21,12 @@ class RepoActivityTest{
     val activityRule = ActivityScenarioRule(RepoActivity::class.java)
 
     @Test
-    @Throws(InterruptedException::class)
     fun testVisibilityRecyclerView() {
         Thread.sleep(1000)
         onView(ViewMatchers.withId(R.id.rv_repository))
     }
 
     @Test
-    @Throws(InterruptedException::class)
     fun scrollTopositionTest(){
         Thread.sleep(2000)
         onView(withId(R.id.rv_repository))

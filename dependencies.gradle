@@ -14,6 +14,7 @@ buildscript {
         core_testing_version = "2.1.0"
         glide_version = "4.12.0"
         espresso_version = "3.4.0"
+        espresso_contrib_version = "3.2.0"
         junit_version = "4.13.2"
         mockk_version = "1.10.6"
     }
