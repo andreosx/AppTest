@@ -54,13 +54,13 @@ class RepoActivity : AppCompatActivity(R.layout.activity_repo), CellClickListene
     private fun setView(){
         listRepo = arrayListOf()
         adapter = RepoAdapter(this,this)
-        binding.recyclerView.adapter = adapter
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.rvRepository.adapter = adapter
+        binding.rvRepository.layoutManager = LinearLayoutManager(this)
 
-        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        binding.rvRepository.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                if (!binding.recyclerView.canScrollVertically(1)) {
+                if (!binding.rvRepository.canScrollVertically(1)) {
                     if (currentPage <= Constants.totalAvailablePages) {
                         currentPage += 1
                         getItemList(currentPage)
@@ -83,11 +83,11 @@ class RepoActivity : AppCompatActivity(R.layout.activity_repo), CellClickListene
     }
 
     private fun showLoading(){
-        binding.progressBar.visibility = View.VISIBLE
+        binding.pbRepository.visibility = View.VISIBLE
     }
 
     private fun hiddenLoading(){
-        binding.progressBar.visibility = View.GONE
+        binding.pbRepository.visibility = View.GONE
     }
 
     override fun onCellClickListener(repo: Repo) {
