@@ -28,9 +28,10 @@ class RepoActivityTest{
     }
 
     @Test
+    @Throws(InterruptedException::class)
     fun scrollTopositionTest(){
         Thread.sleep(2000)
         onView(withId(R.id.rv_repository))
-            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(2))
+            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(10))
     }
 }
