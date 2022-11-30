@@ -23,7 +23,6 @@ class RepoActivity : AppCompatActivity(R.layout.activity_repo), CellClickListene
     private lateinit var listRepo: MutableList<Repo>
 
     private val viewModel by viewModel<RepoViewModel>()
-
     private var currentPage = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +38,7 @@ class RepoActivity : AppCompatActivity(R.layout.activity_repo), CellClickListene
     private fun initObservable(){
         viewModel.getList().observe(this) {
             hiddenLoading()
-            if (it != null) {
+            it.let{
                 listRepo.addAll(it)
                 loadPageList(it)
             }
@@ -47,7 +46,9 @@ class RepoActivity : AppCompatActivity(R.layout.activity_repo), CellClickListene
 
         viewModel.getError().observe(this) {
             hiddenLoading()
-            Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+            it.let{
+                Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

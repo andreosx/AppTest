@@ -3,21 +3,23 @@ package com.br.apptest.presenter.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.br.apptest.domain.model.repo.Repo
 import com.br.apptest.domain.model.util.SystemDTO
 import com.br.apptest.use_case.IRepoUseCase
 import com.br.apptest.util.Output
 import com.br.apptest.util.parseResponse
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class RepoViewModel(private val useCase: IRepoUseCase) : ViewModel() {
 
     private val itemList = MutableLiveData<List<Repo>>()
     private val errorMessage = MutableLiveData<SystemDTO>()
-    var job: Job? = null
 
     fun getItemList(page: Int) {
-        job = CoroutineScope(Dispatchers.IO).launch {
+       viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 when (val response = useCase.getRepositories(page).parseResponse()) {
                     is Output.Success -> itemList.postValue(useCase.convRepositories(response.value).Repos)
@@ -39,8 +41,4 @@ class RepoViewModel(private val useCase: IRepoUseCase) : ViewModel() {
         return errorMessage
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        job?.cancel()
-    }
 }
