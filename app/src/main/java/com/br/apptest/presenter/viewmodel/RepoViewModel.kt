@@ -20,7 +20,7 @@ class RepoViewModel(private val useCase: IRepoUseCase) : ViewModel() {
 
     fun getItemList(page: Int) {
        viewModelScope.launch {
-            withContext(Dispatchers.Main) {
+            withContext(Dispatchers.IO) {
                 when (val response = useCase.getRepositories(page).parseResponse()) {
                     is Output.Success -> itemList.postValue(useCase.convRepositories(response.value).Repos)
                     is Output.Failure -> errorMessage.postValue(
