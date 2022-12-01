@@ -54,7 +54,7 @@ class RepoActivity : AppCompatActivity(R.layout.activity_repo), CellClickListene
 
     private fun setView(){
         listRepo = arrayListOf()
-        adapter = RepoAdapter(this,this)
+        adapter = RepoAdapter(this.applicationContext,this)
         binding.rvRepository.adapter = adapter
         binding.rvRepository.layoutManager = LinearLayoutManager(this)
 
