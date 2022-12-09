@@ -1,4 +1,4 @@
-package com.br.apptest.use_case
+package com.br.apptest.domain.model.use_case
 
 import com.br.apptest.data.model.RepositoriesResponse
 import com.br.apptest.data.repository.RepoRepository

@@ -12,26 +12,19 @@ import com.br.apptest.presenter.adapter.util.CellClickListener
 import com.bumptech.glide.Glide
 
 class RepoAdapter(val ctx: Context, private val cellClickListener: CellClickListener) :
-    RecyclerView.Adapter<RepoAdapter.MainActivityAdapterHolder>() {
+    RecyclerView.Adapter<RepoAdapter.ViewHolder>() {
 
     private var item = emptyList<Repo>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainActivityAdapterHolder {
-        return MainActivityAdapterHolder(LayoutInflater.from(parent.context).inflate(R.layout.adapter_repo, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
+        LayoutInflater.from(ctx).inflate(R.layout.adapter_repo, parent, false)
+    )
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(item[position])
     }
 
-    override fun onBindViewHolder(holder: MainActivityAdapterHolder, position: Int) {
-        setValues(holder,item[position])
-        setAcessibility(holder,item[position])
-    }
-
-    override fun getItemCount(): Int {
-        return item.size
-    }
-
-    class MainActivityAdapterHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val binding = AdapterRepoBinding.bind(itemView)
-    }
+    override fun getItemCount() = item.size
 
     fun updateList(Repo: List<Repo>, oldCount: Int, tvShowListSize: Int) {
         this.item = Repo
@@ -39,29 +32,18 @@ class RepoAdapter(val ctx: Context, private val cellClickListener: CellClickList
         notifyItemRangeInserted(oldCount, tvShowListSize)
     }
 
-    private fun setValues(holder: MainActivityAdapterHolder, repo: Repo){
-        holder.binding.repositoryName.text = repo.name
-        holder.binding.repositoryDescription.text = repo.description
-        holder.binding.repositoryForkCount.text = repo.forks_count.toString()
-        holder.binding.repositoryStarCount.text = repo.stargazers_count.toString()
-        holder.binding.ownerUsername.text = repo.owner.login
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val binding = AdapterRepoBinding.bind(view)
 
-        Glide.with(ctx)
-            .load(repo.owner.avatar_url)
-            .circleCrop()
-            .into(holder.binding.ownerPicture)
-
-        holder.itemView.setOnClickListener {
-            cellClickListener.onCellClickListener(repo)
+        fun bind(repo: Repo) {
+            with(binding) {
+                binding.repositoryName.text = repo.name
+                binding.repositoryDescription.text = repo.description
+                binding.repositoryForkCount.text = repo.forks_count.toString()
+                binding.repositoryStarCount.text = repo.stargazers_count.toString()
+                binding.ownerUsername.text = repo.owner.login
+            }
         }
     }
 
-    private fun setAcessibility(holder: MainActivityAdapterHolder, repo: Repo){
-        holder.binding.repositoryName.contentDescription = ctx.getString(R.string.repository_name,repo.name)
-        holder.binding.repositoryDescription.contentDescription = ctx.getString(R.string.repository_description,repo.description)
-        holder.binding.repositoryForkCount.contentDescription = ctx.getString(R.string.forks_description,repo.forks_count.toString())
-        holder.binding.repositoryStarCount.contentDescription = ctx.getString(R.string.star_description,repo.stargazers_count.toString())
-        holder.binding.ownerUsername.contentDescription = ctx.getString(R.string.owner_description,repo.owner.login)
-        holder.binding.ownerPicture.contentDescription = ctx.getString(R.string.avatar_owner_description)
-    }
 }
